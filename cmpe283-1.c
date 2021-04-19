@@ -43,7 +43,6 @@ struct capability_info pinbased[5] =
 };
 
 /*
-<<<<<<< HEAD
  * VM Exit capabilities
  * See SDM volume 3, section 24.7.1
  */
@@ -86,7 +85,7 @@ struct capability_info vmEntry[12] =
 };
 
 
-=======
+/*
  * Procbased capabilities
  * See SDM volume 3, section 24.6.2
  */
@@ -146,7 +145,6 @@ struct capability_info procbased2[23] =
 	{ 25, "Use TSC scaling"}
 };
 
->>>>>>> 23c4f30dffaea353c8853af242ec15076556e028
 /*
  * report_capability
  *
@@ -195,7 +193,6 @@ detect_vmx_features(void)
 		(uint64_t)(lo | (uint64_t)hi << 32));
 	report_capability(pinbased, 5, lo, hi);
 	
-<<<<<<< HEAD
 	/* exit controls */
 	rdmsr(IA32_VMX_EXIT_CTLS, lo, hi);
 	pr_info("Exit Controls MSR: 0x%llx\n",
@@ -207,7 +204,7 @@ detect_vmx_features(void)
 	pr_info("Entry Controls MSR: 0x%llx\n",
 		(uint64_t)(lo | (uint64_t)hi << 32));
 	report_capability(vmEntry, 14, lo, hi);
-=======
+	
 	/* Procbased1 controls */
 	rdmsr(IA32_VMX_PROCBASED_CTLS, lo, hi);
 	pr_info("Procbased Controls MSR: 0x%llx\n",
@@ -219,7 +216,6 @@ detect_vmx_features(void)
 	pr_info("Procbased Controls 2 MSR: 0x%llx\n",
 		(uint64_t)(lo | (uint64_t)hi << 32));
 	report_capability(procbased2, 23, lo, hi);
->>>>>>> 23c4f30dffaea353c8853af242ec15076556e028
 }
 
 /*
