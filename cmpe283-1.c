@@ -43,6 +43,49 @@ struct capability_info pinbased[5] =
 };
 
 /*
+ * VM Exit capabilities
+ * See SDM volume 3, section 24.7.1
+ */
+struct capability_info vmExit[14] =
+{
+	{ 2, "Save debug controls" },
+	{ 9, "Host address-space size" },
+	{ 12, "Load IA32_PERF_GLOBAL_CTRL" },
+	{ 15, "Acknowledge interrupt on exit" },
+	{ 18, "Save IA32_PAT" },
+	{ 19, "Load IA32_PAT" },
+	{ 20, "Save IA32_EFER" },
+	{ 21, "Load IA32_EFER" },
+	{ 22, "Save VMX-preemption timer value" },
+	{ 23, "Clear IA32_BNDCFGS" },
+	{ 24, "Conceal VMX from PT" },
+	{ 25, "Clear IA32_RTIT_CTL" },
+	{ 28, "Load CET state" },
+	{ 29, "Load PKRS" }
+};
+
+/*
+ * VM Entry capabilities
+ * See SDM volume 3, section 24.7.1
+ */
+struct capability_info vmEntry[12] =
+{
+	{ 2, "Load debug controls" },
+	{ 9, "IA-32e mode guest" },
+	{ 10, "Entry to SMM" },
+	{ 11, "Deactivate dual-monitor treatment" },
+	{ 13, "load IA32_PERF_GLOBAL_CTRL" },
+	{ 14, "Load IA32_PAT" },
+	{ 15, "Load IA32_EFER" },
+	{ 16, "Load IA32_BNDCFGS" },
+	{ 17, "Conceal VMX from PT" },
+	{ 18, "Load IA32_RTIT_CTL" },
+	{ 20, "Load CET state" },
+	{ 22, "Load PKRS" }
+};
+
+
+/*
  * report_capability
  *
  * Reports capabilities present in 'cap' using the corresponding MSR values
@@ -89,6 +132,18 @@ detect_vmx_features(void)
 	pr_info("Pinbased Controls MSR: 0x%llx\n",
 		(uint64_t)(lo | (uint64_t)hi << 32));
 	report_capability(pinbased, 5, lo, hi);
+	
+	/* exit controls */
+	rdmsr(IA32_VMX_EXIT_CTLS, lo, hi);
+	pr_info("Exit Controls MSR: 0x%llx\n",
+		(uint64_t)(lo | (uint64_t)hi << 32));
+	report_capability(vmExit, 14, lo, hi);
+	
+	/* entry controls */
+	rdmsr(IA32_VMX_ENTRY_CTLS, lo, hi);
+	pr_info("Entry Controls MSR: 0x%llx\n",
+		(uint64_t)(lo | (uint64_t)hi << 32));
+	report_capability(vmEntry, 14, lo, hi);
 }
 
 /*
