@@ -220,7 +220,7 @@ detect_vmx_features(void)
 		report_capability(procbased2, 23, lo, hi);
 	} else
 	{
-		pr_info("No Support for procbased 2 controls");
+		pr_info("Processor does not Support procbased 2 controls\n");
 	}
 }
 
