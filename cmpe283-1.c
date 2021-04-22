@@ -211,11 +211,17 @@ detect_vmx_features(void)
 		(uint64_t)(lo | (uint64_t)hi << 32));
 	report_capability(procbased1, 21, lo, hi);
 	
-	/* Procbased2 controls */
-	rdmsr(IA32_VMX_PROCBASED_CTLS2, lo, hi);
-	pr_info("Procbased Controls 2 MSR: 0x%llx\n",
-		(uint64_t)(lo | (uint64_t)hi << 32));
-	report_capability(procbased2, 23, lo, hi);
+	if(hi & (1 << 31)
+	{
+		/* Procbased2 controls */
+		rdmsr(IA32_VMX_PROCBASED_CTLS2, lo, hi);
+		pr_info("Procbased Controls 2 MSR: 0x%llx\n",
+			(uint64_t)(lo | (uint64_t)hi << 32));
+		report_capability(procbased2, 23, lo, hi);
+	} else
+	{
+		pr_info("No Support for procbased 2 controls");
+	}
 }
 
 /*
