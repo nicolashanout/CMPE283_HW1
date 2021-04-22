@@ -11,15 +11,16 @@ Implemented detail reporting for VM Entry and VM Exit controls.
 Implemented detail reporting for Procbased and Procbased2 controls.
 
 ## Steps
-<ol>
-  <li> Define MSR value constants in CMPE283-1.c for procbased, procbased2, entry, and exit controls
-  <li> For each MSR value, find corresponding control bits and names in SDM and add to struct
-  <li> In detect_VMX_features(), add rdmsr() and prinfo() to read and print info from MSR, report capabilities
-  <li> Call make from terminal to compile new module
-  <li> Insert new module into kernel with `sudo insmod cmpe283-1.ko`
-  <li> Check output of module using `sudo dmesg` (sudo may or may not be needed)
-</ol>
-`[ 1104.110866] CMPE 283 Assignment 1 Module Start
+
+1. Define MSR value constants in CMPE283-1.c for procbased, procbased2, entry, and exit controls
+2. For each MSR value, find corresponding control bits and names in SDM and add to struct
+3. In detect_VMX_features(), add rdmsr() and prinfo() to read and print info from MSR, report capabilities
+4. Call make from terminal to compile new module
+5. Insert new module into kernel with `sudo insmod cmpe283-1.ko`
+6. Check output of module using `sudo dmesg` (sudo may or may not be needed)
+
+<pre>
+[ 1104.110866] CMPE 283 Assignment 1 Module Start
 [ 1104.110868] Pinbased Controls MSR: 0x7f00000016
 [ 1104.110869]   External Interrupt Exiting: Can set=Yes, Can clear=Yes
 [ 1104.110870]   NMI Exiting: Can set=Yes, Can clear=Yes
@@ -102,4 +103,4 @@ Implemented detail reporting for Procbased and Procbased2 controls.
 [ 1104.110939]   Enable XSAVES/XRSTORS: Can set=No, Can clear=Yes
 [ 1104.110940]   Mode-based execute control for EPT: Can set=No, Can clear=Yes
 [ 1104.110941]   Use TSC scaling: Can set=No, Can clear=Yes
-`
+</ pre>
