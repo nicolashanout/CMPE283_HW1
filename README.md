@@ -1,14 +1,14 @@
 # CMPE_HW1
 
 ## Team Members
-Nicolas Hanout 012303434  
+Nicolas Hanout 012303434
 Heng Jerry Quan 014560130
 
 ## Contributions
-- Nicolas Hanout
-Implemented detail reporting for VM Entry and VM Exit controls.
-- Heng Jerry Quan
-Implemented detail reporting for Procbased and Procbased2 controls.
+- Nicolas Hanout: Implemented detail reporting for VM Entry and VM Exit controls.
+- Heng Jerry Quan: Implemented detail reporting for Procbased and Procbased2 controls.
+
+All other steps (listed below) were done by both team members.
 
 ## Steps
 
