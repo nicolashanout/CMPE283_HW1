@@ -14,10 +14,10 @@ All other steps (listed below) were done by both team members.
 
 1. Define MSR value constants in CMPE283-1.c for procbased, procbased2, entry, and exit controls
 2. For each MSR value, find corresponding control bits and names in SDM and add to struct
-3. In `detect_VMX_features()`:
-  1. for each additional exit type do the following (except for procbased 2 if procbased's capability "Activate secondary controls" cannot be set)
-  2. add calls for `rdmsr()` with the corresponding MSR address to read the MSR values and `pr_info()` to print a log message with the capabilities we are reporting on.
-  3. call `report_capability` passing it the struct containing the bit mappings and names of the capabilities, along with the values read into `lo` and `hi` by `rdmsr`.
+3. update `detect_VMX_features()`:  
+    1. for each additional exit type do the following (except for procbased 2 if procbased's capability "Activate secondary controls" cannot be set)
+    2. add calls for `rdmsr()` with the corresponding MSR address to read the MSR values and `pr_info()` to print a log message with the capabilities we are reporting on.
+    3. call `report_capability` passing it the struct containing the bit mappings and names of the capabilities, along with the values read into `lo` and `hi` by `rdmsr`.
 5. Call make from terminal to compile new module
 6. Insert new module into kernel with `sudo insmod cmpe283-1.ko`
 7. Check output of module using `sudo dmesg` (sudo may or may not be needed)
