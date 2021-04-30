@@ -1,7 +1,7 @@
 # CMPE_HW1
 
 ## Team Members
-Nicolas Hanout 012303434
+Nicolas Hanout 012303434  
 Heng Jerry Quan 014560130
 
 ## Contributions
