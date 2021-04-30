@@ -66,7 +66,7 @@ struct capability_info vmExit[14] =
 
 /*
  * VM Entry capabilities
- * See SDM volume 3, section 24.7.1
+ * See SDM volume 3, section 24.8.1
  */
 struct capability_info vmEntry[12] =
 {
